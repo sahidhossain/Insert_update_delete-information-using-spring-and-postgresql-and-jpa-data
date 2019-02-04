@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Customer Info</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css}" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css}" />
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css}" />
+
+<style>
+body {
+	margin-bottom: 100px;
+	margin-right: 150px;
+	margin-top: 50px;
+	margin-left: 80px;
+}
+</style>
+</head>
+<body>
+	<!-- <h1 class="text-center">Student List</h1>
+
+	<br />
+	<br />-->
+	<center>
+		<button style="display: table; margin: 0 auto;" type="button"
+			class="btn btn-outline-success and-all-other-classes pull-right">
+			<a th:href="@{/form}" style="color: inherit; text-decoration: none;">Add
+				Student</a>
+		</button>
+	</center>
+	</br>
+	<table id="example" class="table table-striped table-bordered"
+		style="width: 100%">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Email</th>
+				<th>Password</th>
+				<th>Gender</th>
+				<th>Hobby/Hobbies</th>
+				<th>Country</th>
+				<th>Roll</th>
+				<th>Birth Date</th>
+				<th>Operations</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="customer_num : ${customer}">
+				<td th:utext="${customer_num.id}">...</td>
+				<td th:utext="${customer_num.email}">...</td>
+				<td th:utext="${customer_num.password}">...</td>
+				<td th:utext="${customer_num.gender}">...</td>
+				<td th:utext="${customer_num.hobby}">...</td>
+				<td th:utext="${customer_num.country}">...</td>
+				<td th:utext="${customer_num.roll}">...</td>
+				<td th:utext="${customer_num.date}">...</td>
+				<td >
+<!-- 				<input type="submit" class="btn btn-primary" value="Edit">
+				<input type="submit" class="btn btn-danger" value="Delete"> -->
+				<a th:href="@{/delete(id=${customer_num.id})}" onclick="return confirm('Are you sure you want to delete this item?');"class="btn btn-danger">Delete</a>
+				<a th:href="@{/edit(id=${customer_num.id})}" class="btn btn-info">Edit</a>
+
+				</td>
+				
+				
+				
+			</tr> 
+		</tbody>
+	</table>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+	</script>
+</body>
+</html>
