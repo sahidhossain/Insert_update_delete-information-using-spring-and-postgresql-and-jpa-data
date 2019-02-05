@@ -1,5 +1,6 @@
 //package com.sahid.demo.repository;
 //
+//import java.util.Date;
 //import java.util.List;
 //
 //import org.junit.Test;
@@ -25,15 +26,19 @@
 //	@Test
 //	public void testSave()
 //	{
+//		int year=1994;
+//		int month=3;
+//		int day=01;
+//		Date firstDate1 = new Date( day,  month,  year);
 //		Student st=new Student();
-//		st.setId(22);
-//		st.setFirstname("Sahid");
-//		st.setLastname("hossain");
-//		st.setFathername("Father");
-//		st.setMothername("Mother");
-//		st.setEmail("Email");
-//		st.setPhoneno("01622");
-//		st.setBirthdate("01 sep");
+//		st.setId(89);
+//		st.setEmail("A@gmail.com");
+//		st.setPassword("222");
+//		st.setGender("male");
+//		st.setHobby("cricket");;
+//		st.setCountry("Bangladesh");
+//		st.setRoll(111111);
+//		st.setDate(firstDate1);
 //		sr.save(st);
 //	}
 //	
@@ -46,7 +51,7 @@
 //	
 //	@Test
 //	public void testFindOne() {
-//		Student student = sr.findById(new Long(2)).get();
+//		Student student = sr.findById(new Long(89)).orElse(null);
 //		System.out.println(student.toString());
 //	}
 //}

@@ -40,9 +40,9 @@ public class MainController {
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	public String studentsubmit(@ModelAttribute Student student, Model model) {
 		model.addAttribute("student", student);
-
-		if (student.getEmail() == null || student.getEmail().length() <= 0) {
-			model.addAttribute("error1", "Email is empty");
+		if (student.getEmail() == null || student.getEmail().length() <= 0 || student.getPassword().equals(null)
+				|| student.getPassword().length() <= 0) {
+			model.addAttribute("error1", "Please fill up all the fields correctly");
 		} else {
 			Student getresponseid = sr.save(student);
 			if (getresponseid.getId() > 0) {
@@ -55,27 +55,15 @@ public class MainController {
 		return "form";
 	}
 
-//	@RequestMapping("/load")
-//	public String studentSubmit(@RequestParam("id") long id, Model model) {
-//
-//		model.addAttribute("student", ss.findOne(id));
-//
-//		return "load";
-//	}
-
 	@RequestMapping(value = "/load", method = RequestMethod.GET)
 	public String studentSpecific(@RequestParam("id") long id, Model model) {
-
-		model.addAttribute("customer", ss.findOne(id));
-
+		model.addAttribute("student", ss.findOne(id));
 		return "load";
 	}
 
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public String allData(Model model) {
-
-		model.addAttribute("customer", ss.getAllStudentData());
-
+		model.addAttribute("student", ss.getAllStudentData());
 		return "all";
 	}
 
@@ -91,16 +79,20 @@ public class MainController {
 		return "edit_form";
 	}
 
-	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit_form", method = RequestMethod.POST)
 	public String student_update(@ModelAttribute Student student, @RequestParam(name = "id") Long id, Model model) {
-		
 		Student get_update_id = ss.update(student);
-		if (get_update_id.getId() > 0) {
-			model.addAttribute("update", "Data is Updated Successfully");
+		if (student.getEmail() == null || student.getEmail().length() <= 0 || student.getPassword().equals(null)
+				|| student.getPassword().length() <= 0) {
+			model.addAttribute("error1", "Please fill up all the fields correctly");
 		} else {
-			model.addAttribute("error2", "Data not Updated");
+			if (get_update_id.getId() > 0) {
+				model.addAttribute("update", "Data is Updated Successfully");
+			} else {
+				model.addAttribute("error2", "Data not Updated");
+			}
 		}
-		return "form";
+		return "edit_form";
 	}
 
 }

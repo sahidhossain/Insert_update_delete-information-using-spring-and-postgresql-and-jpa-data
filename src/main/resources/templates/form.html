@@ -18,28 +18,13 @@ body {
 <body>
 
 
-
-
-
 	<div class="container">
 		<div class="jumbotron">
-			<h1 class="text-center">Information Insertion Page</h1>
+			<h1 class="text-center">Insert Informations of Student</h1>
 			<p class="text-center">User can insert their own information in
 				this page</p>
 		</div>
 	</div>
-
-	<!--  
-         In Thymeleaf the equivalent of
-         JSP's ${pageContext.request.contextPath}/edit.html
-         would be @{/edit.html}         
-         -->
-
-
-	<!-- <div class="card bg-light p-3">
- <p class="mb-0">Please Enter the information of Students:</p>
-</div>-->
-
 
 
 	<div th:if="${(success)}">
@@ -56,73 +41,17 @@ body {
 				th:utext="${error1}">.</label>
 		</div>
 	</div>
+	<div th:if="${(update)}">
+		<div class="form-group row">
+			<div class="col-sm-2"></div>
+			<label for="inputEmail3" class="col-sm-4 text-primary col-form-label"><td
+				th:utext="${update}">.</label>
+		</div>
+	</div>
 
 
-	<form id="studentForm" action="#" th:action="@{/form}"
+	<form name="form-name" id="studentForm" action="#" th:action="@{/form}"
 		th:object="${student}" method="post">
-		<!--   
-    
-    <div class="form-group">
-       <label class="control-label col-sm-2">ID</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{id}" placeholder=" Student ID">
-      </div>
-    </div>
-    
-     <div class="form-group">
-       <label class="control-label col-sm-2">First Name</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{firstname}" placeholder=" Student First Name">
-      </div>
-    </div>
-    <div class="form-group">
-       <label class="control-label col-sm-2">Last Name</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{lastname}" placeholder=" Student Last Name">
-      </div>
-    </div>
-    <div class="form-group">
-       <label class="control-label col-sm-2">Father Name</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{fathername}" placeholder=" Student Father Name">
-      </div>
-    </div>
-    <div class="form-group">
-       <label class="control-label col-sm-2">Mother Name</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{mothername}" placeholder=" Student Mother Name">
-      </div>
-    </div>
-    <div class="form-group">
-       <label class="control-label col-sm-2">Email</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{email}" placeholder=" Student Email">
-      </div>
-    </div>
-    <div class="form-group">
-       <label class="control-label col-sm-2">Phone No</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{phoneno}" placeholder=" Student Phone No">
-      </div>
-    </div>
-    <div class="form-group">
-       <label class="control-label col-sm-2">Birth Date</label>
-      <div class="col-sm-6">
-      <input type="text" class="form-control" th:field="*{birthdate}" placeholder=" Student Birth Date">
-      </div>
-    </div>
-  <div class="form-group">
-   
-      <div class="col-sm-4">
-      <input type="submit" class="btn btn-info" value="Submit">
-      <input type="reset" class="btn btn-danger" value="Reset">
-      <button class="btn btn-primary col-sm-4" ><a th:href="@{/all}" style="color:inherit;text-decoration:none;">Go to Student List </a></button>
-      </div>
-
-  </div>
-  -->
-
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
@@ -215,7 +144,6 @@ body {
 					placeholder="Number">
 			</div>
 		</div>
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<label for="inputEmail3" class="col-sm-1 col-form-label">Birth
@@ -225,9 +153,6 @@ body {
 					th:field="*{date}" value="23/08/2017" placeholder="DD/MM/YYYY" />
 			</div>
 		</div>
-
-
-
 		<div class="form-group row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-10">
@@ -248,12 +173,6 @@ body {
 				</button>
 			</div>
 		</div>
-
-
-
-
-
-
 	</form>
 </body>
 </html>

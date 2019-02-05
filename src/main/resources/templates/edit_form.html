@@ -5,7 +5,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css"
 	th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css}" />
-
 <style>
 body {
 	margin-bottom: 100px;
@@ -16,39 +15,30 @@ body {
 </style>
 </head>
 <body>
-
-
-
-
-
 	<div class="container">
 		<div class="jumbotron">
-			<h1 class="text-center">Edit the informations of</h1>
-			<p class="text-center">User can edit their own information in this
-				page</p>
+			<h1 class="text-center">Edit Student Informations</h1>
+			<p class="text-center">User can edit their own information in
+				this page</p>
 		</div>
 	</div>
-
-
 	<div th:if="${update}">
 		<div class="form-group row">
 			<div class="col-sm-2"></div>
-			<h2>saih</h2>
 			<label for="inputEmail3" class="col-sm-4 text-primary col-form-label"><td
 				th:utext="${update}">.</label>
 		</div>
 	</div>
-	<div th:if="${(error2)}">
+	<div th:if="${(error1)}">
 		<div class="form-group row">
 			<div class="col-sm-2"></div>
 			<label for="inputEmail3" class="col-sm-4 text-primary col-form-label"><td
 				th:utext="${error1}">.</label>
 		</div>
 	</div>
-
-
+	
 	<form th:if="${(student)}" id="studentForm" action="#"
-		th:action="@{/form}" th:object="${student}" method="post">
+		th:action="@{/edit_form}" th:object="${student}" method="post">
 
 		<div class="form-group row">
 			<div class="col-sm-8">
@@ -56,7 +46,6 @@ body {
 					class="form-control">
 			</div>
 		</div>
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
@@ -65,7 +54,6 @@ body {
 					class="form-control" placeholder="Email">
 			</div>
 		</div>
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<label for="inputPassword3" class="col-sm-1 col-form-label">Password</label>
@@ -74,7 +62,6 @@ body {
 					id="inputPassword3" placeholder="Password">
 			</div>
 		</div>
-
 		<fieldset class="form-group">
 			<div class="row">
 				<div class="col-sm-1"></div>
@@ -98,7 +85,6 @@ body {
 				</div>
 			</div>
 		</fieldset>
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-1">Hobby/Hobbies</div>
@@ -126,7 +112,6 @@ body {
 				</div>
 			</div>
 		</div>
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<label for="inputPassword3" class="col-sm-1 col-form-label">Country</label>
@@ -140,7 +125,6 @@ body {
 				</select>
 			</div>
 		</div>
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<label for="inputEmail3" class="col-sm-1 col-form-label">Roll</label>
@@ -149,7 +133,6 @@ body {
 					placeholder="Number">
 			</div>
 		</div>
-
 		<div class="form-group row">
 			<div class="col-sm-1"></div>
 			<label for="inputEmail3" class="col-sm-1 col-form-label">Birth
@@ -159,9 +142,6 @@ body {
 					th:field="*{date}" value="23/08/2017" placeholder="DD/MM/YYYY" />
 			</div>
 		</div>
-
-
-
 		<div class="form-group row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-10">
@@ -182,12 +162,6 @@ body {
 				</button>
 			</div>
 		</div>
-
-
-
-
-
-
 	</form>
 </body>
 </html>

@@ -10,8 +10,5 @@ public class StudentInformationApplication {
 
 		SpringApplication.run(StudentInformationApplication.class, args);
 	}
-	
-
 
 }
-

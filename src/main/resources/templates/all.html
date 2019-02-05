@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Customer Info</title>
+<title>student Info</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
 <link rel="stylesheet" type="text/css"
@@ -51,26 +51,21 @@ body {
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="customer_num : ${customer}">
-				<td th:utext="${customer_num.id}">...</td>
-				<td th:utext="${customer_num.email}">...</td>
-				<td th:utext="${customer_num.password}">...</td>
-				<td th:utext="${customer_num.gender}">...</td>
-				<td th:utext="${customer_num.hobby}">...</td>
-				<td th:utext="${customer_num.country}">...</td>
-				<td th:utext="${customer_num.roll}">...</td>
-				<td th:utext="${customer_num.date}">...</td>
-				<td >
-<!-- 				<input type="submit" class="btn btn-primary" value="Edit">
-				<input type="submit" class="btn btn-danger" value="Delete"> -->
-				<a th:href="@{/delete(id=${customer_num.id})}" onclick="return confirm('Are you sure you want to delete this item?');"class="btn btn-danger">Delete</a>
-				<a th:href="@{/edit(id=${customer_num.id})}" class="btn btn-info">Edit</a>
-
+			<tr th:each="student_num : ${student}">
+				<td th:utext="${student_num.id}">...</td>
+				<td th:utext="${student_num.email}">...</td>
+				<td th:utext="${student_num.password}">...</td>
+				<td th:utext="${student_num.gender}">...</td>
+				<td th:utext="${student_num.hobby}">...</td>
+				<td th:utext="${student_num.country}">...</td>
+				<td th:utext="${student_num.roll}">...</td>
+				<td th:utext="${student_num.date}">...</td>
+				<td><a th:href="@{/delete(id=${student_num.id})}"
+					onclick="return confirm('Are you sure you want to delete this item?');"
+					class="btn btn-danger">Delete</a> <a
+					th:href="@{/edit(id=${student_num.id})}" class="btn btn-info">Edit</a>
 				</td>
-				
-				
-				
-			</tr> 
+			</tr>
 		</tbody>
 	</table>
 
