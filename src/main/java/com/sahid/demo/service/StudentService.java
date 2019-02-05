@@ -31,8 +31,10 @@ public class StudentService {
 		return saveStudentData(student);
 	}
 	
-	public void deleteOne(Long id) {
+	public long deleteOne(Long id) {
+		Long i=id;
 		studentRepository.deleteById(id);
+		return i;
 	}
 
 

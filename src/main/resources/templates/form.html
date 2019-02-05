@@ -1,179 +1,290 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>Form Submission</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css"
-	th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css}" />
 
-<style>
-body {
-	margin-bottom: 100px;
-	margin-right: 150px;
-	margin-top: 50px;
-	margin-left: 80px;
-}
-</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>SIS</title>
+<!-- Custom fonts for this template-->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+
+<!-- Page level plugin CSS-->
+<link href="vendor/datatables/dataTables.bootstrap4.css"
+	rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet">
+
 </head>
-<body>
+
+<body id="page-top">
+
+	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+		<a class="navbar-brand mr-1" href="index.html">SIS</a>
+
+		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
+			id="sidebarToggle" href="#">
+			<i class="fas fa-bars"></i>
+		</button>
+
+	</nav>
+
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<ul class="sidebar navbar-nav">
+			<li class="nav-item active"><a class="nav-link" th:href="@{/}">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Home</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/form}">
+					<i class="fas fa-fw fa-table"></i> <span>Add Student Info</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/all}">
+					<i class="fas fa-fw fa-table"></i> <span>Show Students List</span>
+			</a></li>
+		</ul>
 
 
-	<div class="container">
-		<div class="jumbotron">
-			<h1 class="text-center">Insert Informations of Student</h1>
-			<p class="text-center">User can insert their own information in
-				this page</p>
-		</div>
-	</div>
+		<div id="content-wrapper">
 
+			<div class="container-fluid">
 
-	<div th:if="${(success)}">
-		<div class="form-group row">
-			<div class="col-sm-2"></div>
-			<label for="inputEmail3" class="col-sm-4 text-primary col-form-label"><td
-				th:utext="${success}">.</label>
-		</div>
-	</div>
-	<div th:if="${(error1)}">
-		<div class="form-group row">
-			<div class="col-sm-2"></div>
-			<label for="inputEmail3" class="col-sm-4 text-primary col-form-label"><td
-				th:utext="${error1}">.</label>
-		</div>
-	</div>
-	<div th:if="${(update)}">
-		<div class="form-group row">
-			<div class="col-sm-2"></div>
-			<label for="inputEmail3" class="col-sm-4 text-primary col-form-label"><td
-				th:utext="${update}">.</label>
-		</div>
-	</div>
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><h3>ADD STUDENT INFORMATION</h3></li>
+				</ol>
+				<!--Student Add-->
+				<div class="card mb-3" style="margin-top:10px;">
 
+					<!-- <div class="card-body"> -->
+						<div th:if="${(success)}">
+							<div class="form-group row">
+								<div class="col-sm-2"></div>
+								<label for="inputEmail3"
+									class="col-sm-4 text-primary col-form-label"><td
+									th:utext="${success}">.</label>
+							</div>
+						</div>
+						<div th:if="${(error1)}">
+							<div class="form-group row">
+								<div class="col-sm-2"></div>
+								<label for="inputEmail3"
+									class="col-sm-4 text-primary col-form-label"><td
+									th:utext="${error1}">.</label>
+							</div>
+						</div>
+						<div th:if="${(update)}">
+							<div class="form-group row">
+								<div class="col-sm-2"></div>
+								<label for="inputEmail3"
+									class="col-sm-4 text-primary col-form-label"><td
+									th:utext="${update}">.</label>
+							</div>
+						</div>
 
-	<form name="form-name" id="studentForm" action="#" th:action="@{/form}"
-		th:object="${student}" method="post">
-		<div class="form-group row">
-			<div class="col-sm-1"></div>
-			<label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
-			<div class="col-sm-8">
-				<input type="email" th:field="*{email}" class="form-control"
-					placeholder="Email">
-			</div>
-		</div>
+						<form name="form-name" id="studentForm" action="#"
+							th:action="@{/form}" th:object="${student}" method="post">
+							<div class="form-group row">
+								<div class="col-sm-1"></div>
+								<label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
+								<div class="col-sm-8">
+									<input type="email" th:field="*{email}" class="form-control"
+										placeholder="Email">
+								</div>
+							</div>
 
-		<div class="form-group row">
-			<div class="col-sm-1"></div>
-			<label for="inputPassword3" class="col-sm-1 col-form-label">Password</label>
-			<div class="col-sm-8">
-				<input type="password" th:field="*{password}" class="form-control"
-					id="inputPassword3" placeholder="Password">
-			</div>
-		</div>
+							<div class="form-group row">
+								<div class="col-sm-1"></div>
+								<label for="inputPassword3" class="col-sm-1 col-form-label">Password</label>
+								<div class="col-sm-8">
+									<input type="password" th:field="*{password}"
+										class="form-control" id="inputPassword3"
+										placeholder="Password">
+								</div>
+							</div>
 
-		<fieldset class="form-group">
-			<div class="row">
-				<div class="col-sm-1"></div>
-				<legend class="col-form-label col-sm-1 pt-0">Gender</legend>
-				<div class="col-sm-10">
-					<div class="form-check">
-						<input class="form-check-input" type="radio" th:field="*{gender}"
-							id="gridRadios1" value="male" checked> <label
-							class="form-check-label" for="gridRadios1"> Male </label>
+							<fieldset class="form-group">
+								<div class="row">
+									<div class="col-sm-1"></div>
+									<legend class="col-form-label col-sm-1 pt-0">Gender</legend>
+									<div class="col-sm-10">
+										<div class="form-check">
+											<input class="form-check-input" type="radio"
+												th:field="*{gender}" id="gridRadios1" value="male" checked>
+											<label class="form-check-label" for="gridRadios1">
+												Male </label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio"
+												th:field="*{gender}" id="gridRadios2" value="female">
+											<label class="form-check-label" for="gridRadios2">
+												Female </label>
+										</div>
+										<div class="form-check disabled">
+											<input class="form-check-input" type="radio"
+												th:field="*{gender}" id="gridRadios3" value="other">
+											<label class="form-check-label" for="gridRadios3">
+												Other </label>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+
+							<div class="form-group row">
+								<div class="col-sm-1"></div>
+								<div class="col-sm-1">Hobby/Hobbies</div>
+								<div class="col-sm-10">
+									<div class="form-check">
+										<input class="form-check-input" th:field="*{hobby}"
+											value="Cricket" type="checkbox" id="gridCheck1"> <label
+											class="form-check-label" for="gridCheck1"> Cricket </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" th:field="*{hobby}"
+											value="Football" type="checkbox" id="gridCheck2"> <label
+											class="form-check-label" for="gridCheck2"> Football </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" th:field="*{hobby}"
+											value="Listening Music" type="checkbox" id="gridCheck3">
+										<label class="form-check-label" for="gridCheck3">
+											Listening Music </label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" th:field="*{hobby}"
+											value="Traveling" type="checkbox" id="gridCheck4"> <label
+											class="form-check-label" for="gridCheck4"> Traveling
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-1"></div>
+								<label for="inputPassword3" class="col-sm-1 col-form-label">Country</label>
+								<div class="col-sm-4">
+									<select id="inputState" th:field="*{country}"
+										class="form-control">
+										<option value="London">London</option>
+										<option value="India">India</option>
+										<option value="Pakistan">Pakistan</option>
+										<option value="America">America</option>
+										<option value="Bangladesh">Bangladesh</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-1"></div>
+								<label for="inputEmail3" class="col-sm-1 col-form-label">Roll</label>
+								<div class="col-sm-4">
+									<input type="number" th:field="*{roll}" class="form-control"
+										placeholder="Number">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-1"></div>
+								<label for="inputEmail3" class="col-sm-1 col-form-label">Birth
+									Date</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="incident-date"
+										th:field="*{date}" value="23/08/2017" placeholder="DD/MM/YYYY" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-2"></div>
+								<div class="col-sm-10">
+								
+									<input type="submit" class="btn btn-primary" value="Submit">
+									<input type="reset" class="btn btn-danger" value="Reset">
+								</div>
+							</div>
+							</br>
+							<div class="form-group row">
+								<div class="col-sm-1"></div>
+								<label class="col-sm-1">Want to check list?</label>
+								<div class="col-sm-1">
+									<button style="display: table; margin: 0 auto;" type="button"
+										class="btn btn-outline-success and-all-other-classes ">
+										<a th:href="@{/all}"
+											style="color: inherit; text-decoration: none;">Click Here</a>
+									</button>
+								</div>
+							</div>
+						</form>
 					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" th:field="*{gender}"
-							id="gridRadios2" value="female"> <label
-							class="form-check-label" for="gridRadios2"> Female </label>
+<!-- 				</div> -->
+
+
+				<!-- Sticky Footer -->
+				<footer class="sticky-footer">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Md Sahid Hossain</span>
+						</div>
 					</div>
-					<div class="form-check disabled">
-						<input class="form-check-input" type="radio" th:field="*{gender}"
-							id="gridRadios3" value="other"> <label
-							class="form-check-label" for="gridRadios3"> Other </label>
+				</footer>
+
+			</div>
+			<!-- /.content-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
+
+		<!-- Logout Modal-->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Ready to
+							Leave?</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Select "Logout" below if you are
+						ready to end your current session.</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-dismiss="modal">Cancel</button>
+						<a class="btn btn-primary" href="login.html">Logout</a>
 					</div>
 				</div>
 			</div>
-		</fieldset>
-
-		<div class="form-group row">
-			<div class="col-sm-1"></div>
-			<div class="col-sm-1">Hobby/Hobbies</div>
-			<div class="col-sm-10">
-				<div class="form-check">
-					<input class="form-check-input" th:field="*{hobby}" value="Cricket"
-						type="checkbox" id="gridCheck1"> <label
-						class="form-check-label" for="gridCheck1"> Cricket </label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" th:field="*{hobby}"
-						value="Football" type="checkbox" id="gridCheck2"> <label
-						class="form-check-label" for="gridCheck2"> Football </label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" th:field="*{hobby}"
-						value="Listening Music" type="checkbox" id="gridCheck3"> <label
-						class="form-check-label" for="gridCheck3"> Listening Music
-					</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" th:field="*{hobby}"
-						value="Traveling" type="checkbox" id="gridCheck4"> <label
-						class="form-check-label" for="gridCheck4"> Traveling </label>
-				</div>
-			</div>
 		</div>
 
-		<div class="form-group row">
-			<div class="col-sm-1"></div>
-			<label for="inputPassword3" class="col-sm-1 col-form-label">Country</label>
-			<div class="col-sm-4">
-				<select id="inputState" th:field="*{country}" class="form-control">
-					<option value="London">London</option>
-					<option value="India">India</option>
-					<option value="Pakistan">Pakistan</option>
-					<option value="America">America</option>
-					<option value="Bangladesh">Bangladesh</option>
-				</select>
-			</div>
-		</div>
+		<!-- Bootstrap core JavaScript-->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-		<div class="form-group row">
-			<div class="col-sm-1"></div>
-			<label for="inputEmail3" class="col-sm-1 col-form-label">Roll</label>
-			<div class="col-sm-4">
-				<input type="number" th:field="*{roll}" class="form-control"
-					placeholder="Number">
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-1"></div>
-			<label for="inputEmail3" class="col-sm-1 col-form-label">Birth
-				Date</label>
-			<div class="col-sm-4">
-				<input type="text" class="form-control" id="incident-date"
-					th:field="*{date}" value="23/08/2017" placeholder="DD/MM/YYYY" />
-			</div>
-		</div>
-		<div class="form-group row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-10">
-				<!-- <button type="submit" class="btn btn-primary">Sign in</button>-->
-				<input type="submit" class="btn btn-primary" value="Submit">
-				<input type="reset" class="btn btn-danger" value="Reset">
-			</div>
-		</div>
-		</br>
-		<div class="form-group row">
-			<div class="col-sm-1"></div>
-			<label class="col-sm-1">Want to check list?</label>
-			<div class="col-sm-1">
-				<button style="display: table; margin: 0 auto;" type="button"
-					class="btn btn-outline-success and-all-other-classes ">
-					<a th:href="@{/all}" style="color: inherit; text-decoration: none;">Click
-						Here</a>
-				</button>
-			</div>
-		</div>
-	</form>
+		<!-- Core plugin JavaScript-->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Page level plugin JavaScript-->
+		<script src="vendor/chart.js/Chart.min.js"></script>
+		<script src="vendor/datatables/jquery.dataTables.js"></script>
+		<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="js/sb-admin.min.js"></script>
+
+		<!-- Demo scripts for this page-->
+		<script src="js/demo/datatables-demo.js"></script>
+		<script src="js/demo/chart-area-demo.js"></script>
 </body>
-</html>
 
+</html>

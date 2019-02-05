@@ -1,81 +1,176 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>student Info</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" type="text/css" th:href="@{/style.css}" />
-<link rel="stylesheet" type="text/css"
-	th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css}" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>SIS</title>
+<!-- Custom fonts for this template-->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
 
-<link rel="stylesheet" type="text/css"
-	th:href="@{https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css}" />
+<!-- Page level plugin CSS-->
+<link href="vendor/datatables/dataTables.bootstrap4.css"
+	rel="stylesheet">
 
-<link rel="stylesheet" type="text/css"
-	th:href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css}" />
+<!-- Custom styles for this template-->
+<link href="css/sb-admin.css" rel="stylesheet">
 
-<style>
-body {
-	margin-bottom: 100px;
-	margin-right: 150px;
-	margin-top: 50px;
-	margin-left: 80px;
-}
-</style>
 </head>
-<body>
-	<!-- <h1 class="text-center">Student List</h1>
-
-	<br />
-	<br />-->
-	<center>
-		<button style="display: table; margin: 0 auto;" type="button"
-			class="btn btn-outline-success and-all-other-classes pull-right">
-			<a th:href="@{/form}" style="color: inherit; text-decoration: none;">Add
-				Student</a>
+<body id="page-top">
+	<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+		<a class="navbar-brand mr-1" href="index.html">SIS</a>
+		<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
+			id="sidebarToggle" href="#">
+			<i class="fas fa-bars"></i>
 		</button>
-	</center>
-	</br>
-	<table id="example" class="table table-striped table-bordered"
-		style="width: 100%">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Email</th>
-				<th>Password</th>
-				<th>Gender</th>
-				<th>Hobby/Hobbies</th>
-				<th>Country</th>
-				<th>Roll</th>
-				<th>Birth Date</th>
-				<th>Operations</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:each="student_num : ${student}">
-				<td th:utext="${student_num.id}">...</td>
-				<td th:utext="${student_num.email}">...</td>
-				<td th:utext="${student_num.password}">...</td>
-				<td th:utext="${student_num.gender}">...</td>
-				<td th:utext="${student_num.hobby}">...</td>
-				<td th:utext="${student_num.country}">...</td>
-				<td th:utext="${student_num.roll}">...</td>
-				<td th:utext="${student_num.date}">...</td>
-				<td><a th:href="@{/delete(id=${student_num.id})}"
-					onclick="return confirm('Are you sure you want to delete this item?');"
-					class="btn btn-danger">Delete</a> <a
-					th:href="@{/edit(id=${student_num.id})}" class="btn btn-info">Edit</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	</nav>
+	<div id="wrapper">
 
-	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#example').DataTable();
-		});
-	</script>
+		<!-- Sidebar -->
+		<ul class="sidebar navbar-nav">
+			<li class="nav-item active"><a class="nav-link" th:href="@{/}">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>Home</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/form}">
+					<i class="fas fa-fw fa-table"></i> <span>Add Student Info</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/all}">
+					<i class="fas fa-fw fa-table"></i> <span>Show Students List</span>
+			</a></li>
+		</ul>
+
+		<div id="content-wrapper">
+
+			<div class="container-fluid">
+
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><h3>STUDENT LIST</h3></li>
+				</ol>
+				<!-- Area Chart Example-->
+				<div class="card mb-3">
+					<div class="card-body">
+						<div class="contaer">
+							<div th:if="${(delete)}">
+								<label class="col-sm-4 text-primary col-form-label"><td
+									th:utext="${delete}"></label>
+							</div>
+							<br>
+							<table id="example" class="table table-striped table-bordered"
+								style="width: 100%">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Email</th>
+										<th>Password</th>
+										<th>Gender</th>
+										<th>Hobby/Hobbies</th>
+										<th>Country</th>
+										<th>Roll</th>
+										<th>Birth Date</th>
+										<th>Operations</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="student_num : ${student}">
+										<td th:utext="${student_num.id}">...</td>
+										<td th:utext="${student_num.email}">...</td>
+										<td th:utext="${student_num.password}">...</td>
+										<td th:utext="${student_num.gender}">...</td>
+										<td th:utext="${student_num.hobby}">...</td>
+										<td th:utext="${student_num.country}">...</td>
+										<td th:utext="${student_num.roll}">...</td>
+										<td th:utext="${student_num.date}">...</td>
+										<td><a th:href="@{/delete(id=${student_num.id})}"
+											onclick="return confirm('Are you sure you want to delete this item?');"
+											class="btn btn-danger">Delete</a> <a
+											th:href="@{/edit(id=${student_num.id})}" class="btn btn-info">Edit</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+							<script
+								src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+							<script
+								src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$('#example').DataTable();
+								});
+							</script>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Sticky Footer -->
+				<footer class="sticky-footer">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>Md Sahid Hossain</span>
+						</div>
+					</div>
+				</footer>
+
+			</div>
+			<!-- /.content-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
+
+		<!-- Logout Modal-->
+		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Ready to
+							Leave?</h5>
+						<button class="close" type="button" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">Select "Logout" below if you are
+						ready to end your current session.</div>
+					<div class="modal-footer">
+						<button class="btn btn-secondary" type="button"
+							data-dismiss="modal">Cancel</button>
+						<a class="btn btn-primary" href="login.html">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript-->
+		<script src="vendor/jquery/jquery.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+		<!-- Page level plugin JavaScript-->
+		<script src="vendor/chart.js/Chart.min.js"></script>
+		<script src="vendor/datatables/jquery.dataTables.js"></script>
+		<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="js/sb-admin.min.js"></script>
+
+		<!-- Demo scripts for this page-->
+		<script src="js/demo/datatables-demo.js"></script>
+		<script src="js/demo/chart-area-demo.js"></script>
 </body>
+
 </html>

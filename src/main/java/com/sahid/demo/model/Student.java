@@ -23,7 +23,7 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	@Column(name="email")
+	@Column(name="email",unique=true)
 	private String email;
 	
 	@Column(name="password")
